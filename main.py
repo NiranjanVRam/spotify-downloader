@@ -78,7 +78,7 @@ def downloadFromYoutube(q):
     
         yt = YouTube(youtubeSongUrl)
         downloadedFilePath = yt.streams.get_audio_only().download(filename=trackTitle,skip_existing=False)
-        print(f'Conerting to mp3 with {bitrate}kpbs bitrate..')
+        print(f'Converting to mp3 with {bitrate}kpbs bitrate..')
         command = f'ffmpeg -v quiet -y -i "{downloadedFilePath}" -acodec libmp3lame -abr true -af "apad=pad_dur=2" -vn -sn -dn -b:a {bitrate}k "{convertedFilePath}"'
         os.system(command)
 
@@ -90,7 +90,7 @@ def downloadFromYoutube(q):
 
 def saveMP3(downloadedFilePath,convertedFilePath,data):
 
-    print(f'Conerting to mp3 with {bitrate}kpbs bitrate..')
+    print(f'Converting to mp3 with {bitrate}kpbs bitrate..')
     #FFMPEG Conversion
     command = f'ffmpeg -v quiet -y -i "{downloadedFilePath}" -acodec libmp3lame -abr true -af "apad=pad_dur=2" -vn -sn -dn -b:a {bitrate}k "{convertedFilePath}"'
     os.system(command)
@@ -132,7 +132,7 @@ def saveMP3(downloadedFilePath,convertedFilePath,data):
     remove(downloadedFilePath)
 
 #Main program
-userQuery = input('Enter track title and artist / Spotify URL : ')
+userQuery = input('Enter track title and artist/Spotify URL : ')
 trackId = search_song(userQuery)
 
 if trackId is None:
